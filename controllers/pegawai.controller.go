@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/agutama/echo-rest/models"
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo"
 )
 
 func FetchAllPegawai(c echo.Context) error {

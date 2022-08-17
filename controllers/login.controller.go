@@ -7,7 +7,7 @@ import (
 	"github.com/agutama/echo-rest/helpers"
 	"github.com/agutama/echo-rest/models"
 	"github.com/dgrijalva/jwt-go"
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo"
 )
 
 func CheckLogin(c echo.Context) error {
