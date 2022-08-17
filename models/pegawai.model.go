@@ -54,7 +54,7 @@ func FetchPegawaiByID(id int) (Response, error) {
 
 	con := db.CreateCon()
 
-	sqlStatement := "SELECT * FROM pegawai WHERE id= ?"
+	sqlStatement := "SELECT * FROM pegawai WHERE id= $1"
 
 	rows, err := con.Query(sqlStatement, id)
 	if err != nil {

@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -25,11 +26,13 @@ func FetchAllPegawaiByID(c echo.Context) error {
 	conv_id, err := strconv.Atoi(id)
 
 	if err != nil {
+		fmt.Println(err)
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
 	result, err := models.FetchPegawaiByID(conv_id)
 	if err != nil {
+		fmt.Println(err)
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
