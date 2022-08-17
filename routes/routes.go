@@ -16,5 +16,8 @@ func Init() *echo.Echo {
 
 	e.GET("/pegawai", controllers.FetchAllPegawai)
 
+	e.GET("/generate-hash/:password", controllers.GenerateHashPassword)
+	e.POST("/login", controllers.CheckLogin)
+
 	return e
 }
