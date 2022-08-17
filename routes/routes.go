@@ -16,6 +16,7 @@ func Init() *echo.Echo {
 	})
 
 	e.GET("/pegawai", controllers.FetchAllPegawai, middleware.IsAuthenticated)
+	e.GET("/pegawaibyid", controllers.FetchAllPegawaiByID, middleware.IsAuthenticated)
 
 	e.GET("/generate-hash/:password", controllers.GenerateHashPassword)
 	e.POST("/login", controllers.CheckLogin)
