@@ -19,7 +19,7 @@ func CheckLogin(username, password string) (bool, error) {
 
 	con := db.CreateCon()
 
-	sqlStatement := "SELECT * FROM users WHERE username= ?"
+	sqlStatement := "SELECT * FROM users WHERE username= $1"
 
 	err := con.QueryRow(sqlStatement, username).Scan(
 		&obj.id, &obj.Username, &pwd,
