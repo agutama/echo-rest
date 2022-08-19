@@ -15,6 +15,8 @@ func Init() *echo.Echo {
 		return c.String(http.StatusOK, "Hello, this is echo!")
 	})
 
+	e.GET("/company", controllers.FetchAllCompany)
+
 	e.GET("/pegawai", controllers.FetchAllPegawai, middleware.IsAuthenticated)
 	e.GET("/pegawaibyid", controllers.FetchAllPegawaiByID, middleware.IsAuthenticated)
 

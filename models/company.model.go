@@ -1,0 +1,82 @@
+package models
+
+import (
+	"net/http"
+
+	"github.com/agutama/echo-rest/db"
+)
+
+type Company struct {
+	id      string `json: "id"`
+	Name    string `json: "name"`
+	Address string `json: "address,omitempty`
+}
+
+func FectAllCompany() (Response, error) {
+	var obj Company
+	var arrobj []Company
+	var res Response
+
+	con := db.CreateCon()
+	sqlStatement := "SELECT id,name,COALESCE(address,'') FROM alamisharia.company LIMIT 10"
+
+	rows, err := con.Query(sqlStatement)
+
+	// defer rows.Close()
+
+	if err != nil {
+		return res, err
+	}
+
+	for rows.Next() {
+
+		err = rows.Scan(&obj.id, &obj.Name, &obj.Address)
+
+		if err != nil {
+			return res, err
+		}
+
+		arrobj = append(arrobj, obj)
+
+	}
+
+	res.Status = http.StatusOK
+	res.Message = "Success"
+	res.Data = arrobj
+
+	return res, nil
+
+}
+
+func FetchCompanyByID(id string) (Response, error) {
+	var obj Company
+	var arrobj []Company
+	var res Response
+
+	con := db.CreateCon()
+
+	sqlStatement := "SELECT * FROM Company WHERE id= $1"
+
+	rows, err := con.Query(sqlStatement, id)
+	if err != nil {
+		return res, err
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		err = rows.Scan(&obj.id, &obj.Name, &obj.Address)
+		if err != nil {
+			return res, err
+		}
+
+		arrobj = append(arrobj, obj)
+
+	}
+
+	res.Status = http.StatusOK
+	res.Message = "Success"
+	res.Data = arrobj
+
+	return res, nil
+}

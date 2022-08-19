@@ -5,5 +5,5 @@ import (
 )
 
 var IsAuthenticated = middleware.JWTWithConfig(middleware.JWTConfig{
-	SigningKey: []byte("bismillah123"),
+	SigningKey: []byte("bebasdiisi"),
 })

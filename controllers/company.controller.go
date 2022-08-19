@@ -2,14 +2,13 @@ package controllers
 
 import (
 	"net/http"
-	"strconv"
 
 	"github.com/agutama/echo-rest/models"
 	"github.com/labstack/echo"
 )
 
-func FetchAllPegawai(c echo.Context) error {
-	result, err := models.FectAllPegawai()
+func FetchAllCompany(c echo.Context) error {
+	result, err := models.FectAllCompany()
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
@@ -18,17 +17,11 @@ func FetchAllPegawai(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-func FetchAllPegawaiByID(c echo.Context) error {
+func FetchAllCompanyByID(c echo.Context) error {
 
 	id := c.FormValue("id")
 
-	conv_id, err := strconv.Atoi(id)
-
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
-	}
-
-	result, err := models.FetchPegawaiByID(conv_id)
+	result, err := models.FetchCompanyByID(id)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
