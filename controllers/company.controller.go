@@ -17,11 +17,23 @@ func FetchAllCompany(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 
-func FetchAllCompanyByID(c echo.Context) error {
+func FetchCompanyByID(c echo.Context) error {
 
 	id := c.FormValue("id")
 
-	result, err := models.FetchCompanyByID(id)
+	result, err := models.GetCompanyByID(id)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	return c.JSON(http.StatusOK, result)
+}
+
+func FetchCompanyInID(c echo.Context) error {
+
+	id := c.FormValue("id")
+
+	result, err := models.GetCompanyInID(id)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}

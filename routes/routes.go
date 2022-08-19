@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/agutama/echo-rest/controllers"
-	"github.com/agutama/echo-rest/middleware"
 	"github.com/labstack/echo"
 )
 
@@ -16,9 +15,8 @@ func Init() *echo.Echo {
 	})
 
 	e.GET("/company", controllers.FetchAllCompany)
-
-	e.GET("/pegawai", controllers.FetchAllPegawai, middleware.IsAuthenticated)
-	e.GET("/pegawaibyid", controllers.FetchAllPegawaiByID, middleware.IsAuthenticated)
+	e.GET("/companybyid", controllers.FetchCompanyByID)
+	e.GET("/companyinid", controllers.FetchCompanyInID)
 
 	e.GET("/generate-hash/:password", controllers.GenerateHashPassword)
 	e.POST("/login", controllers.CheckLogin)
