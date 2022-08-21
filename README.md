@@ -8,3 +8,4 @@ https://github.com/dudyali/echo-rest
 Database: PostgreSQL
 
 ## refactoring
+### db/sql migrate to gorm
