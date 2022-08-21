@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/agutama/echo-rest/db"
@@ -112,7 +111,6 @@ func GetCompanyInID(id string) (Response, error) {
 	res.Message = "Success"
 	res.Data = arrobj
 
-	fmt.Println(rows)
 	return res, nil
 
 }
